@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"name="viewport"></meta>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>登录</title>
+  </head>
+  <style>
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+html,body {
+    height: 100%;
+}
+
+body {
+    /* background: url('../images/bg.jpg') no-repeat center center; */
+    background-image:url(images03.jpg);
+    background-size: cover;
+}
+
+.container {
+    display:flex;
+    border-radius:25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width:48%;
+    height:65%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(#fa9c9cd0, #656cb893);
+    box-shadow: #999 0 2px 10px;
+    opacity:0.9;
+}
+
+.btn-send:hover {
+    background-color: #d8d8d8;
+}
+
+.login_box {
+    border-radius:25px;
+    width:60%;
+    height:100%;
+    background-color: #fff;
+    box-shadow: #999 0 2px 10px;
+}
+
+.login_box h3 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 80px;
+}
+#pwd2{
+    width:75%;
+    height:21px;       
+    margin-left:43px;
+    /* 这里是去除掉input的默认样式然后修改为自己的 */
+    background:none;  
+    outline:none;  
+    border:0px;
+    /* 这里是修改为自己的样式 */
+    border-bottom: 2px solid #dcdcdc;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
+#pwd1,#pwd2,#uname {
+    width:75%;
+    height:21px;       
+    margin-bottom:20px;
+    margin-left:43px;
+    /* 这里是去除掉input的默认样式然后修改为自己的 */
+    background:none;  
+    outline:none;  
+    border:0px;
+    /* 这里是修改为自己的样式 */
+    border-bottom: 2px solid #dcdcdc;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    }
+ 
+#pwd1:focus,#pwd2:focus,#uname:focus{
+    border-bottom: 2px solid #0f996b69;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+} 
+
+#weui-btn {
+    position: relative;
+    display: block;
+    width:75%;
+    margin:0 auto;
+    box-sizing: border-box;
+    font-size:14px;
+    text-align: center;
+    color: #ffffff;
+    line-height:2.5;
+    border-radius:10px;
+    overflow: hidden;
+    background-image: linear-gradient(to right, hsla(251, 85%, 82%, 0.801) , rgba(252, 152, 185, 0.459));
+    border:none;
+    margin-top:5%;
+}
+
+.secret{
+    text-align:center;
+}
+
+.login_box p {
+    height:30px;
+    line-height:30px;
+    padding-left:40px;
+} 
+.register{
+    width:40%;
+}
+.register p{
+    margin-top:10%;
+    text-align:center;
+    color: #ffffff;
+}
+h2{
+    margin-top:15%;
+    text-align: center;
+    color: #ffffff;
+}
+.res-btn{
+    display:block;
+    width:30%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    line-height:2.5;
+    border-radius:25px;
+    background-color:transparent;
+    border:2px solid white;
+    margin-top:80%;
+}
+.res-btn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.secret a{
+    color:rgba(180, 179, 179, 0.911);
+    font-size:7px;
+}
+  </style>
+  
+  <body>
+    <div class="container">
+    <div class="login_box" style="display:block;">
+      <h3>用户登录</h3>
+    <form action="http://localhost:8888/index.html" method="GET">
+      <p>昵称</p>
+      <input type="text" placeholder=" 请输入昵称" id="uname" name="uname" />
+      <p>密码</p>
+      <input type="password" placeholder=" 请输入密码" id="pwd1" name="pwd" />
+      <p>确认密码</p>
+      <input type="password" placeholder=" 请再次输入密码" id="pwd2" name="pwd" onkeyup="validate()"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sp"></span>
+      <div class="secret"><a href="#">忘记密码？</a></div>  
+      <input type="submit" id="weui-btn" value="登录" />
+    </form>
+    </div>
+    <div class="register">
+        <h2>还未注册？</h2>
+        <p>立即注册，发现契合灵魂</p>
+        <a href="index3.html">
+        <button class="res-btn">注册</button>
+        </a>
+    </div>
+  </div>
+  <script>
+      function validate() {
+        var pwd1 = document.getElementById("pwd1").value;
+        var pwd2 = document.getElementById("pwd2").value;
+        if(pwd1 == pwd2){
+            document.getElementById("sp").innerHTML="<font color='green'>密码输入正确</font>";
+            document.getElementById("weui-btn").disabled = false;
+        }else {
+            document.getElementById("sp").innerHTML="<font color='red'>密码输入错误</font>";
+            document.getElementById("weui-btn").disabled = true;
+ }
+}
+  </script>
+  </body>
+</html>
